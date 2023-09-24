@@ -12,4 +12,16 @@
         android:icon="@drawable/icone_agenda"
         android:title="Agenda"/>
 
+    <item
+        android:id="@+id/item_navegacao_Servicos"
+        android:title="Serviços"
+        android:icon="@drawable/icone_servico"
+
+        />
+    <item
+        android:id="@+id/item_navegacao_Funcionario"
+        android:title="Funcionário"
+        android:icon="@drawable/equipe"
+        />
+
 </menu>

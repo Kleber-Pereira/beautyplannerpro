@@ -13,6 +13,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tcc.beautyplannerpro.fragment.FragmentCalendario;
 import com.tcc.beautyplannerpro.fragment.FragmentHome;
 import com.tcc.beautyplannerpro.util.Permissao;
+import com.tcc.beautyplannerpro.funcionario.FuncionarioFragment;
+import com.tcc.beautyplannerpro.Servicos.ServicosFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +24,15 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentHome fragmentHome;
     private FragmentCalendario fragmentCalendario;
+    private ServicosFragment fragmentServico;
+    private FuncionarioFragment fragmentFuncionario;
+
 
     private Fragment fragment;
     private FragmentManager fragmentManager;
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentHome = new FragmentHome();
         fragmentCalendario = new FragmentCalendario();
+        fragmentServico= new ServicosFragment();
+        fragmentFuncionario = new FuncionarioFragment();
 
         fragmentManager = getSupportFragmentManager();
 
@@ -79,6 +90,18 @@ public class MainActivity extends AppCompatActivity {
 
                         fragment = fragmentCalendario;
                         break;
+
+                    case R.id.item_navegacao_Servicos:
+
+                        fragment = fragmentServico;
+                        break;
+
+                    case R.id.item_navegacao_Funcionario:
+
+                        fragment = fragmentFuncionario;
+                        break;
+
+
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_Fragment,fragment).commit();

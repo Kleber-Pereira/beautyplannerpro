@@ -31,6 +31,17 @@
         <activity android:name=".activity.HorariosActivity" />
         <activity android:name=".activity.AgendamentoServicoActivity" />
         <activity android:name=".activity.AlterarRemoverServicoActivity" />
+
+        <activity android:name=".funcionario.FuncionarioActivity" />
+        <activity android:name=".funcionario.FuncionarioBuscarActivity" />
+        <activity android:name=".funcionario.FuncionarioDetailsActivity" />
+        <activity android:name=".funcionario.FuncionarioInserirActivity" />
+        <activity android:name=".Servicos.ServicosInserirActivity" />
+        <activity android:name=".Servicos.ServicosActivity" />
+        <activity android:name=".Servicos.ServicosBuscarActivity" />
+        <activity android:name=".Servicos.ServicosDetailsActivity" />
+
+
     </application>
 
 </manifest>
