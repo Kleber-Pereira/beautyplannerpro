@@ -3,13 +3,10 @@ package com.tcc.beautyplannerpro.funcionario
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.tcc.beautyplannerpro.R
 import java.text.SimpleDateFormat
@@ -21,7 +18,7 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
     private lateinit var tvfuncionarioTelefone: TextView
     private lateinit var tvfuncionarioEmail:  TextView
     private lateinit var tvfuncionarioServico:  TextView
-    private lateinit var tvfuncionarioStatus:  TextView
+
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
 
@@ -94,16 +91,13 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         val etfuncionarioTelefone = mDialogView.findViewById<EditText>(R.id.etfuncionarioTelefone)
         val etfuncionarioEmail = mDialogView.findViewById<EditText>(R.id.etfuncionarioEmail)
         val etfuncionarioServico = mDialogView.findViewById<EditText>(R.id.etfuncionarioServico)
-        val etfuncionarioStatus = mDialogView.findViewById<EditText>(R.id.etfuncionarioStatus)
-
-
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         etfuncionarioNome.setText(intent.getStringExtra("funcionarioNome").toString())
         etfuncionarioTelefone.setText(intent.getStringExtra("funcionarioTelefone").toString())
         etfuncionarioEmail.setText(intent.getStringExtra("funcionarioEmail").toString())
         etfuncionarioServico.setText(intent.getStringExtra("funcionarioServico").toString())
-        etfuncionarioStatus.setText(intent.getStringExtra("funcionarioStatus").toString())
+
 
         mDialog.setTitle("Atualizando $funcionarioNome ")
 
@@ -116,8 +110,7 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
                 etfuncionarioNome.text.toString(),
                 etfuncionarioTelefone.text.toString(),
                 etfuncionarioEmail.text.toString(),
-                etfuncionarioServico.text.toString(),
-                etfuncionarioStatus.text.toString()
+                etfuncionarioServico.text.toString()
 
             )
 
@@ -128,7 +121,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
             tvfuncionarioTelefone.text = etfuncionarioTelefone.text.toString()
             tvfuncionarioEmail.text = etfuncionarioEmail.text.toString()
             tvfuncionarioServico.text = etfuncionarioServico.text.toString()
-            tvfuncionarioStatus.text = etfuncionarioStatus.text.toString()
 
             alertDialog.dismiss()
         }
@@ -139,14 +131,15 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         funcionarioNome: String,
         funcionarioTelefone: String,
         funcionarioEmail: String,
-        funcionarioServico: String,
-        funcionarioStatus: String
+        funcionarioServico: String
 
 
     ) {
         val dbRef = FirebaseDatabase.getInstance().getReference("Funcionarios").child(funcionarioId)
-        val funcionarioInfo = FuncionarioModel(funcionarioId, funcionarioNome,funcionarioTelefone,funcionarioEmail,
-            funcionarioServico,funcionarioStatus)
+        val funcionarioInfo = FuncionarioModel(
+            funcionarioId, funcionarioNome, funcionarioTelefone, funcionarioEmail,
+            funcionarioServico
+        )
         dbRef.setValue(funcionarioInfo)
     }
 
@@ -156,7 +149,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         tvfuncionarioTelefone = findViewById(R.id.tvfuncionarioTelefone)
         tvfuncionarioEmail = findViewById(R.id.tvfuncionarioEmail)
         tvfuncionarioServico = findViewById(R.id.tvfuncionarioServico)
-        tvfuncionarioStatus = findViewById(R.id.tvfuncionarioStatus)
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
     }
@@ -167,8 +159,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         tvfuncionarioTelefone.text = intent.getStringExtra("funcionarioTelefone")
         tvfuncionarioEmail.text = intent.getStringExtra("funcionarioEmail")
         tvfuncionarioServico.text = intent.getStringExtra("funcionarioServico")
-        tvfuncionarioStatus.text = intent.getStringExtra("funcionarioStatus")
-
 
     }
     private fun deleteRecord(

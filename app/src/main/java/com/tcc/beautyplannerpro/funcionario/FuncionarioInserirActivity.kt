@@ -2,11 +2,12 @@ package com.tcc.beautyplannerpro.funcionario
 
 import android.app.DatePickerDialog
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.tcc.beautyplannerpro.R
@@ -19,6 +20,7 @@ class FuncionarioInserirActivity : AppCompatActivity() {
     private lateinit var funcionarioEmail: EditText
     private lateinit var funcionarioServico: EditText
     private lateinit var funcionarioStatus: EditText
+    private lateinit var checkBox_funcionarioStatus: CheckBox
 
     private lateinit var btnSalvarFuncionario: Button
 
@@ -33,6 +35,7 @@ class FuncionarioInserirActivity : AppCompatActivity() {
         funcionarioEmail = findViewById(R.id.funcionarioEmail)
         funcionarioServico = findViewById(R.id.funcionarioServico)
         funcionarioStatus = findViewById(R.id.funcionarioStatus)
+        checkBox_funcionarioStatus = findViewById(R.id.checkbox_funcionarioStatus)
 
         btnSalvarFuncionario = findViewById(R.id.btnSalvarFuncionario)
 
@@ -80,7 +83,8 @@ class FuncionarioInserirActivity : AppCompatActivity() {
         val vfuncionarioTelefone = funcionarioTelefone.text.toString()
         val vfuncionarioEmail = funcionarioEmail.text.toString()
         val vfuncionarioServico = funcionarioServico.text.toString()
-       val vfuncionarioStatus = funcionarioStatus.text.toString()
+        val vfuncionarioStatus = funcionarioStatus.text.toString()
+        val vcheckbox_funcionarioStatus = checkBox_funcionarioStatus.isChecked
 
 
         if (vfuncionarioNome.isEmpty()) {
@@ -110,7 +114,8 @@ class FuncionarioInserirActivity : AppCompatActivity() {
                 vfuncionarioTelefone,
                 vfuncionarioEmail,
                 vfuncionarioServico,
-                vfuncionarioStatus
+                vfuncionarioStatus,
+                vcheckbox_funcionarioStatus
 
                 )
 
@@ -123,6 +128,7 @@ class FuncionarioInserirActivity : AppCompatActivity() {
                     funcionarioEmail.text.clear()
                     funcionarioServico.text.clear()
                     funcionarioStatus.text.clear()
+                    checkBox_funcionarioStatus.isChecked
 
 
                 }.addOnFailureListener { err ->
