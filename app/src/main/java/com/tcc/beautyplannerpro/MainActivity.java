@@ -15,6 +15,7 @@ import com.tcc.beautyplannerpro.fragment.FragmentHome;
 import com.tcc.beautyplannerpro.util.Permissao;
 import com.tcc.beautyplannerpro.funcionario.FuncionarioFragment;
 import com.tcc.beautyplannerpro.Servicos.ServicosFragment;
+import com.tcc.beautyplannerpro.funcao.FuncaoFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentCalendario fragmentCalendario;
     private ServicosFragment fragmentServico;
     private FuncionarioFragment fragmentFuncionario;
+    private FuncaoFragment fragmentFuncao;
 
 
     private Fragment fragment;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentCalendario = new FragmentCalendario();
         fragmentServico= new ServicosFragment();
         fragmentFuncionario = new FuncionarioFragment();
+        fragmentFuncao = new FuncaoFragment();
 
         fragmentManager = getSupportFragmentManager();
 
@@ -99,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.item_navegacao_Funcionario:
 
                         fragment = fragmentFuncionario;
+                        break;
+
+                    case R.id.item_navegacao_Funcao:
+
+                        fragment = fragmentFuncao;
                         break;
 
 

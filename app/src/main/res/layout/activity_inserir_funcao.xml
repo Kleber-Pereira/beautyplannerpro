@@ -4,54 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".funcionario.FuncionarioInserirActivity">
+    tools:context=".funcao.FuncaoInserirActivity">
     <EditText
-        android:id="@+id/funcionarioNome"
+        android:id="@+id/funcaofuncionarioNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nome"
+        android:hint="Funcionário"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
-        android:id="@+id/funcionarioTelefone"
+        android:id="@+id/funcaoservicoNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Telefone"
+        android:hint="Serviço"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcionarioNome" />
-
-    <EditText
-        android:id="@+id/funcionarioEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="E-mail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcionarioTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/funcaofuncionarioNome" />
 
 
     <Button
-        android:id="@+id/btnSalvarFuncionario"
+        android:id="@+id/btnSalvarFuncao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Salvar Funcionario"
+        android:text="Salvar Função"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="219dp"
-        app:layout_constraintTop_toBottomOf="@+id/funcionarioEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/funcaoservicoNome" />
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

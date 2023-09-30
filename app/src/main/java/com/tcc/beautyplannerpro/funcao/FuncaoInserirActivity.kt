@@ -1,10 +1,9 @@
-package com.tcc.beautyplannerpro.funcionario
+package com.tcc.beautyplannerpro.funcao
 
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,29 +13,27 @@ import com.tcc.beautyplannerpro.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FuncionarioInserirActivity : AppCompatActivity() {
-    private lateinit var funcionarioNome: EditText
-    private lateinit var funcionarioTelefone: EditText
-    private lateinit var funcionarioEmail: EditText
+class FuncaoInserirActivity : AppCompatActivity() {
+    private lateinit var funcaofuncionarioNome: EditText
+    private lateinit var funcaoservicoNome: EditText
 
-    private lateinit var btnSalvarFuncionario: Button
+    private lateinit var btnSalvarFuncao: Button
 
     private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inserir_funcionario)
+        setContentView(R.layout.activity_inserir_funcao)
 
-        funcionarioNome = findViewById(R.id.funcionarioNome)
-        funcionarioTelefone = findViewById(R.id.funcionarioTelefone)
-        funcionarioEmail = findViewById(R.id.funcionarioEmail)
+        funcaofuncionarioNome = findViewById(R.id.funcaofuncionarioNome)
+        funcaoservicoNome = findViewById(R.id.funcaoservicoNome)
 
-        btnSalvarFuncionario = findViewById(R.id.btnSalvarFuncionario)
+        btnSalvarFuncao= findViewById(R.id.btnSalvarFuncao)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Funcionarios")
+        dbRef = FirebaseDatabase.getInstance().getReference("Funcao")
 
-        btnSalvarFuncionario.setOnClickListener {
-            salvarDadosFuncionario()
+        btnSalvarFuncao.setOnClickListener {
+            salvarDadosFuncao()
             return@setOnClickListener
         }
 
@@ -70,42 +67,35 @@ class FuncionarioInserirActivity : AppCompatActivity() {
     }
 
 
-    private fun salvarDadosFuncionario() {
+    private fun salvarDadosFuncao() {
 
         //getting values
-        val vfuncionarioNome = funcionarioNome.text.toString()
-        val vfuncionarioTelefone = funcionarioTelefone.text.toString()
-        val vfuncionarioEmail = funcionarioEmail.text.toString()
+        val vfuncaofuncionarioNome = funcaofuncionarioNome.text.toString()
+        val vfuncaoservicoNome = funcaoservicoNome.text.toString()
 
 
-        if (vfuncionarioNome.isEmpty()) {
-            funcionarioNome.error = "Inserir Nome"
+        if (vfuncaofuncionarioNome.isEmpty()) {
+            funcaofuncionarioNome.error = "Inserir Nome"
         }
 
-        else if (vfuncionarioTelefone.isEmpty()) {
-            funcionarioTelefone.error = "Inserir Telefone"
+        else if (vfuncaoservicoNome.isEmpty()) {
+            funcaoservicoNome.error = "Inserir Telefone"
         }
-        else if (vfuncionarioEmail.isEmpty()) {
-            funcionarioEmail.error = "Inserir E-mail"
-        }
-
 
         else {
-            val funcionarioId = dbRef.push().key!!
+            val funcaoId = dbRef.push().key!!
 
-            val funcionario = FuncionarioModel(
-                funcionarioId,
-                vfuncionarioNome,
-                vfuncionarioTelefone,
-                vfuncionarioEmail )
+            val funcao = FuncaoModel(
+                funcaoId,
+                vfuncaofuncionarioNome,
+                vfuncaoservicoNome )
 
-            dbRef.child(funcionarioId).setValue(funcionario)
+            dbRef.child(funcaoId).setValue(funcao)
                 .addOnCompleteListener {
                     Toast.makeText(this, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show()
 
-                    funcionarioNome.text.clear()
-                    funcionarioTelefone.text.clear()
-                    funcionarioEmail.text.clear()
+                    funcaofuncionarioNome.text.clear()
+                    funcaoservicoNome.text.clear()
 
                 }.addOnFailureListener { err ->
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()

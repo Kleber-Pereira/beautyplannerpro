@@ -119,7 +119,7 @@ class ServicosDetailsActivity : AppCompatActivity() {
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
-            Toast.makeText(this, "Dados do servico exluídos", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Dados do serviço excluídos", Toast.LENGTH_LONG).show()
 
             val intent = Intent(this, ServicosBuscarActivity::class.java)
             finish()

@@ -17,7 +17,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
     private lateinit var tvfuncionarioNome: TextView
     private lateinit var tvfuncionarioTelefone: TextView
     private lateinit var tvfuncionarioEmail:  TextView
-    private lateinit var tvfuncionarioServico:  TextView
 
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
@@ -90,13 +89,11 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         val etfuncionarioNome = mDialogView.findViewById<EditText>(R.id.etfuncionarioNome)
         val etfuncionarioTelefone = mDialogView.findViewById<EditText>(R.id.etfuncionarioTelefone)
         val etfuncionarioEmail = mDialogView.findViewById<EditText>(R.id.etfuncionarioEmail)
-        val etfuncionarioServico = mDialogView.findViewById<EditText>(R.id.etfuncionarioServico)
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         etfuncionarioNome.setText(intent.getStringExtra("funcionarioNome").toString())
         etfuncionarioTelefone.setText(intent.getStringExtra("funcionarioTelefone").toString())
         etfuncionarioEmail.setText(intent.getStringExtra("funcionarioEmail").toString())
-        etfuncionarioServico.setText(intent.getStringExtra("funcionarioServico").toString())
 
 
         mDialog.setTitle("Atualizando $funcionarioNome ")
@@ -109,8 +106,7 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
                 funcionarioId,
                 etfuncionarioNome.text.toString(),
                 etfuncionarioTelefone.text.toString(),
-                etfuncionarioEmail.text.toString(),
-                etfuncionarioServico.text.toString()
+                etfuncionarioEmail.text.toString()
 
             )
 
@@ -120,7 +116,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
             tvfuncionarioNome.text = etfuncionarioNome.text.toString()
             tvfuncionarioTelefone.text = etfuncionarioTelefone.text.toString()
             tvfuncionarioEmail.text = etfuncionarioEmail.text.toString()
-            tvfuncionarioServico.text = etfuncionarioServico.text.toString()
 
             alertDialog.dismiss()
         }
@@ -131,14 +126,12 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         funcionarioNome: String,
         funcionarioTelefone: String,
         funcionarioEmail: String,
-        funcionarioServico: String
 
 
     ) {
         val dbRef = FirebaseDatabase.getInstance().getReference("Funcionarios").child(funcionarioId)
         val funcionarioInfo = FuncionarioModel(
-            funcionarioId, funcionarioNome, funcionarioTelefone, funcionarioEmail,
-            funcionarioServico
+            funcionarioId, funcionarioNome, funcionarioTelefone, funcionarioEmail
         )
         dbRef.setValue(funcionarioInfo)
     }
@@ -148,7 +141,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         tvfuncionarioNome = findViewById(R.id.tvfuncionarioNome)
         tvfuncionarioTelefone = findViewById(R.id.tvfuncionarioTelefone)
         tvfuncionarioEmail = findViewById(R.id.tvfuncionarioEmail)
-        tvfuncionarioServico = findViewById(R.id.tvfuncionarioServico)
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
     }
@@ -158,7 +150,6 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         tvfuncionarioNome.text = intent.getStringExtra("funcionarioNome")
         tvfuncionarioTelefone.text = intent.getStringExtra("funcionarioTelefone")
         tvfuncionarioEmail.text = intent.getStringExtra("funcionarioEmail")
-        tvfuncionarioServico.text = intent.getStringExtra("funcionarioServico")
 
     }
     private fun deleteRecord(
@@ -168,7 +159,7 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
-            Toast.makeText(this, "Dados do funcionario exluídos", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Dados do funcionário excluídos", Toast.LENGTH_LONG).show()
 
             val intent = Intent(this, FuncionarioBuscarActivity::class.java)
             finish()

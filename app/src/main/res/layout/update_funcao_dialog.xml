@@ -11,32 +11,24 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/etfuncionarioNome"
+            android:id="@+id/etfuncaofuncionarioNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Nome"
+            android:hint="Funcionário"
             android:inputType="textPersonName" />
 
 
 
         <EditText
-            android:id="@+id/etfuncionarioEmail"
+            android:id="@+id/etfuncaoServicoNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="E-mail"
+            android:hint="Serviço"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/etfuncionarioTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Telefone"
-            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btnUpdateData"

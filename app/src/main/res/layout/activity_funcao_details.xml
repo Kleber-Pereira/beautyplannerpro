@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".funcionario.FuncionarioDetailsActivity">
+    tools:context=".funcao.FuncaoDetailsActivity">
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvfuncionarioId"
+                    android:id="@+id/tvfuncaoId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -90,7 +90,7 @@
 
 
         <LinearLayout
-            android:id="@+id/nome_lin"
+            android:id="@+id/funcaofuncionarioNome_lin"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Nome"
+                    android:text="Funcionário"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -121,7 +121,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvfuncionarioNome"
+                    android:id="@+id/tvfuncaofuncionarioNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -139,7 +139,7 @@
 
 
         <LinearLayout
-            android:id="@+id/telefone_lin"
+            android:id="@+id/funcaoservicoNome_lin"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
@@ -161,7 +161,7 @@
                     android:layout_gravity="center"
 
                     android:gravity="center"
-                    android:text="Telefone"
+                    android:text="Serviço"
                     android:textColor="@color/black"
                     android:textSize="15sp"
 
@@ -176,60 +176,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvfuncionarioTelefone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-
-                    />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/email_lin"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2"
-
-            >
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="E-mail"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-
-
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.4">
-
-                <TextView
-                    android:id="@+id/tvfuncionarioEmail"
+                    android:id="@+id/tvfuncaoservicoNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
