@@ -40,10 +40,12 @@
         <activity android:name=".Servicos.ServicosActivity" />
         <activity android:name=".Servicos.ServicosBuscarActivity" />
         <activity android:name=".Servicos.ServicosDetailsActivity" />
-        <activity android:name=".funcao.FuncaoInserirActivity" />
-        <activity android:name=".funcao.FuncaoActivity" />
-        <activity android:name=".funcao.FuncaoBuscarActivity" />
-        <activity android:name=".funcao.FuncaoDetailsActivity" />
+
+        <activity android:name=".funcoes.FuncoesInserirActivity" />
+        <activity android:name=".funcoes.FuncoesActivity" />
+        <activity android:name=".funcoes.FuncoesBuscarServicoActivity" />
+        <activity android:name=".funcoes.FuncoesBuscarFuncionarioActivity" />
+
 
 
     </application>

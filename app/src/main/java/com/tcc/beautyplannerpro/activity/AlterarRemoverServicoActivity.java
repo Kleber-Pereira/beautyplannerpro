@@ -345,11 +345,6 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
     }
 
 
-
-
-
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

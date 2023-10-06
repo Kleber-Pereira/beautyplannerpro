@@ -1,4 +1,4 @@
-package com.tcc.beautyplannerpro.funcao
+package com.tcc.beautyplannerpro.funcoes
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,7 +21,7 @@ private lateinit var btnFetchData: Button
  * Use the [FuncaoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FuncaoFragment : Fragment() {
+class FuncoesFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,7 +42,7 @@ class FuncaoFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_funcao, container, false)
+        return inflater.inflate(R.layout.activity_funcoes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,11 +51,11 @@ class FuncaoFragment : Fragment() {
         btnFetchData = view.findViewById(R.id.btnFetchData)
 
         btnInsertData.setOnClickListener{
-            val intent = Intent(activity, FuncaoInserirActivity::class.java)
+            val intent = Intent(activity, FuncoesBuscarServicoActivity::class.java)
             startActivity(intent)
         }
         btnFetchData.setOnClickListener{
-            val intent = Intent(activity, FuncaoBuscarActivity::class.java)
+            val intent = Intent(activity, FuncoesBuscarServicoActivity::class.java)//editar
             startActivity(intent)
         }
 
@@ -73,7 +73,7 @@ class FuncaoFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FuncaoFragment().apply {
+            FuncoesFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -12,10 +12,10 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tcc.beautyplannerpro.fragment.FragmentCalendario;
 import com.tcc.beautyplannerpro.fragment.FragmentHome;
+import com.tcc.beautyplannerpro.funcoes.FuncoesFragment;
 import com.tcc.beautyplannerpro.util.Permissao;
 import com.tcc.beautyplannerpro.funcionario.FuncionarioFragment;
 import com.tcc.beautyplannerpro.Servicos.ServicosFragment;
-import com.tcc.beautyplannerpro.funcao.FuncaoFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentCalendario fragmentCalendario;
     private ServicosFragment fragmentServico;
     private FuncionarioFragment fragmentFuncionario;
-    private FuncaoFragment fragmentFuncao;
+    private FuncoesFragment fragmentFuncao;
 
 
     private Fragment fragment;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentCalendario = new FragmentCalendario();
         fragmentServico= new ServicosFragment();
         fragmentFuncionario = new FuncionarioFragment();
-        fragmentFuncao = new FuncaoFragment();
+        fragmentFuncao = new FuncoesFragment();
 
         fragmentManager = getSupportFragmentManager();
 

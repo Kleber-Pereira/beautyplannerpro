@@ -1,11 +1,11 @@
-package com.tcc.beautyplannerpro.funcao
+package com.tcc.beautyplannerpro.funcoes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import com.tcc.beautyplannerpro.R
 
-class FuncaoActivity : AppCompatActivity() {
+class FuncoesActivity : AppCompatActivity() {
     //private lateinit var btnInsertData: Button
    // private lateinit var btnFetchData: Button
 
@@ -14,7 +14,7 @@ class FuncaoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_funcionario)
+        setContentView(R.layout.activity_funcoes)
 
 
        // btnInsertData = findViewById(R.id.btnInsertData)
