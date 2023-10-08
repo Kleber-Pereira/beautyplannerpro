@@ -55,7 +55,7 @@ class FuncoesFragment : Fragment() {
             startActivity(intent)
         }
         btnFetchData.setOnClickListener{
-            val intent = Intent(activity, FuncoesBuscarServicoActivity::class.java)//editar
+            val intent = Intent(activity, FuncoesConsultarServicoActivity::class.java)//editar
             startActivity(intent)
         }
 

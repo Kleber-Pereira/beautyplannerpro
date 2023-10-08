@@ -3,16 +3,13 @@ package com.tcc.beautyplannerpro.funcoes
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import com.tcc.beautyplannerpro.R
-import com.tcc.beautyplannerpro.funcionario.FuncionarioModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,7 +37,7 @@ class FuncoesInserirActivity : AppCompatActivity() {
         funcoesfuncionarioNome.text = intent.getStringExtra("funcionarioNome")
 
         funcoesservicoNome = findViewById(R.id.funcoesservicoNome)
-        funcoesservicoNome.text = intent.getStringExtra("servicinhosujo")
+        funcoesservicoNome.text = intent.getStringExtra("servicoservico")
 
         //spinnerFuncionario = findViewById(R.id.spinnerFuncionario)
 
@@ -140,6 +137,11 @@ class FuncoesInserirActivity : AppCompatActivity() {
             val funcoes = FuncoesModel(
                 funcoesId,
                 vfuncoesfuncionarioNome,vfuncoesservicoNome )
+
+            /*val reference: DatabaseReference =
+                firebaseDatabase.getReference().child("BD").child("Calendario")
+                    .child("HorariosAgendados").child(data.get(2)).child("Mes").child(data.get(1))
+                    .child("dia").child(data.get(0))*/
 
             dbRef.child(funcoesId).setValue(funcoes)
                 .addOnCompleteListener {
