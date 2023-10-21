@@ -1,5 +1,6 @@
 package com.tcc.beautyplannerpro.funcoes
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.tcc.beautyplannerpro.R
+import com.tcc.beautyplannerpro.fragment.FragmentCalendario
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,14 +56,24 @@ class FuncoesFragment : Fragment() {
 
         btnInsertData.setOnClickListener{
             val intent = Intent(activity, FuncoesBuscarServicoActivity::class.java)
+            //val intent = Intent(FragmentCalendario::class.java)
             startActivity(intent)
         }
         btnFetchData.setOnClickListener{
-            val intent = Intent(activity, FuncoesConsultarServicoActivity::class.java)//editar
+            val intent = Intent(activity, FuncoesConsultarFuncionarioActivity::class.java)//editar
             startActivity(intent)
+
+            /*val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+            fragmentTransaction.replace(R.id.container, FragmentCalendario()).commit()*/
         }
 
     }
+
+
+
 
     companion object {
         /**

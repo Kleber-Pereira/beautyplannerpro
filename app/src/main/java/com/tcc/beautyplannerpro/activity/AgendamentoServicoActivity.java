@@ -82,12 +82,6 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
     }
 
 
-
-
-
-
-
-
     //----------------------------------AGENDAR NO FIREBASE-------------------------------------------------
 
 
@@ -131,10 +125,6 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
         }
 
     }
-
-
-
-
 
 
     private void agendarFirebase(String nome,String contato, boolean whatsApp, String email, boolean barba, boolean cabelo){

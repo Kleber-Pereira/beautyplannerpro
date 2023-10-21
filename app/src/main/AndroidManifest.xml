@@ -45,6 +45,7 @@
         <activity android:name=".funcoes.FuncoesActivity" />
         <activity android:name=".funcoes.FuncoesBuscarServicoActivity" />
         <activity android:name=".funcoes.FuncoesBuscarFuncionarioActivity" />
+        <activity android:name=".funcoes.FuncoesConsultarFuncionarioActivity" />
         <activity android:name=".funcoes.FuncoesConsultarServicoActivity" />
         <activity android:name=".funcoes.FuncoesDetailsActivity" />
 

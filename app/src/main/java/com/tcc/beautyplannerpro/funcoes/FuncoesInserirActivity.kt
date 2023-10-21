@@ -142,13 +142,26 @@ class FuncoesInserirActivity : AppCompatActivity() {
                 firebaseDatabase.getReference().child("BD").child("Calendario")
                     .child("HorariosAgendados").child(data.get(2)).child("Mes").child(data.get(1))
                     .child("dia").child(data.get(0))*/
+/*
 
+            dbRef.child("Servico").child(vfuncoesservicoNome).child("Funcionário").
+            child(vfuncoesfuncionarioNome).setValue(funcoes)  .addOnCompleteListener {
+                Toast.makeText(this, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show()
+
+
+                /* funcoesfuncionarioNome.text
+                 funcoesservicoNome.text*/
+
+            }.addOnFailureListener { err ->
+                Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+            }
+*/
             dbRef.child(funcoesId).setValue(funcoes)
                 .addOnCompleteListener {
                     Toast.makeText(this, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show()
 
-                   /* funcoesfuncionarioNome.text
-                    funcoesservicoNome.text*/
+                    funcoesfuncionarioNome.text
+                    funcoesservicoNome.text
 
                 }.addOnFailureListener { err ->
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()

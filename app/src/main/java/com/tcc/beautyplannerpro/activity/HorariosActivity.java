@@ -94,11 +94,6 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
 
 
 
-
-
-
-
-
     //-------------------------------------CARREGAR HORARIOS EMPRESA-------------------------------------------------
 
 
@@ -243,9 +238,6 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
     }
 
 
-
-
-
     //-------------------------------------CLICK ITEM DA LISTA------------------------------------------------
 
 
@@ -253,11 +245,7 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
     public void clickItem(String horario, int posicao) {
 
 
-
-
         if (Util.statusInternet_MoWi(getBaseContext())) {
-
-
             consultarHorarioSelecionadoBanco(horario, posicao);
 
         }else{
@@ -268,40 +256,24 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
 
     }
 
-
-
-
-
-
-
     private void consultarHorarioSelecionadoBanco(final String horario, final int posicao){
-
-
 
         DatabaseReference reference = database.getReference().
                 child("BD").child("Calendario").child("HorariosAgendados").
                 child(data.get(2)).child("Mes").
                 child(data.get(1)).child("dia").child(data.get(0)).child(horarios_Temp.get(posicao));
 
-
-
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
-
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
                 if (dataSnapshot.exists()){
 
-
                     Intent intent = new Intent(getBaseContext(),AlterarRemoverServicoActivity.class);
-
                     String horarioSelecionado = horarios_Temp.get(posicao);
 
-
                     data.add(3,horarioSelecionado);
-
 
                     intent.putExtra("data",data);
 

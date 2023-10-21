@@ -11,11 +11,10 @@ import com.google.firebase.database.*
 import com.tcc.beautyplannerpro.R
 
 
-class FuncoesConsultarServicoActivity : AppCompatActivity() {
+class FuncoesConsultarFuncionarioActivity : AppCompatActivity() {
     private lateinit var funcoesRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
     private lateinit var funcoesList: ArrayList<FuncoesModel>
-    private lateinit var funcoesfuncionarioNome: String
 
 
    // private lateinit var funcionariosList: ArrayList<FuncionarioModel>
@@ -27,17 +26,14 @@ class FuncoesConsultarServicoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_buscar_servicos_funcoes)
+        setContentView(R.layout.activity_buscar_funcionario_funcoes)
 
-        funcoesRecyclerView = findViewById(R.id.rvservicosServico)
+        funcoesRecyclerView = findViewById(R.id.rvfuncionario)
         funcoesRecyclerView.layoutManager = LinearLayoutManager(this)
         funcoesRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
         funcoesList = arrayListOf<FuncoesModel>()
-
-        funcoesfuncionarioNome = intent.getStringExtra("funcoesfuncionarioNome").toString()
-
 
 
 
@@ -60,19 +56,17 @@ class FuncoesConsultarServicoActivity : AppCompatActivity() {
                 if (snapshot.exists()){
                     for (funcoesSnap in snapshot.children){
                         val funcoesData = funcoesSnap.getValue(FuncoesModel::class.java)
-                        if (funcoesfuncionarioNome == funcoesData!!.vfuncoesfuncionarioNome){
-                            funcoesList.add(funcoesData!!)
-                        }
-                       // funcoesList.add(funcoesData!!)
+                        funcoesList.add(funcoesData!!)
                     }
-                    val mAdapter = FuncoesConsultarServAdapter(funcoesList)
+                    val mAdapter = FuncoesConsultarFuncAdapter(funcoesList)
                     funcoesRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : FuncoesConsultarServAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : FuncoesConsultarFuncAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
 
-                            val intent = Intent(this@FuncoesConsultarServicoActivity, FuncoesDetailsActivity::class.java)
+                            //val intent = Intent(this@FuncoesConsultarFuncionarioActivity, FuncoesDetailsActivity::class.java)
+                            val intent = Intent(this@FuncoesConsultarFuncionarioActivity, FuncoesConsultarServicoActivity::class.java)
 
                             //put extras
                             intent.putExtra("funcoesId", funcoesList[position].funcoesId)
