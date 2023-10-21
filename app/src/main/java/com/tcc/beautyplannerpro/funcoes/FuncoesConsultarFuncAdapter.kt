@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 import com.tcc.beautyplannerpro.R
+import com.tcc.beautyplannerpro.funcionario.FuncionarioModel
 
-class FuncoesConsultarFuncAdapter (private val funcoesList: ArrayList<FuncoesModel>) :
+class FuncoesConsultarFuncAdapter (private val funcoesList: ArrayList<FuncionarioModel>) :
     RecyclerView.Adapter<FuncoesConsultarFuncAdapter.ViewHolder>() {
 
         //var onItemClick : ((FuncoesModel) -> Unit)? = null
@@ -31,7 +32,7 @@ class FuncoesConsultarFuncAdapter (private val funcoesList: ArrayList<FuncoesMod
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val currentFuncoes = funcoesList[position]
-            holder.tvfuncoesfuncionarioNome.text= currentFuncoes.vfuncoesfuncionarioNome
+            holder.tvfuncoesfuncionarioNome.text= currentFuncoes.vfuncionarioNome
 
 
         }

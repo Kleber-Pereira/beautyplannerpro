@@ -9,15 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.tcc.beautyplannerpro.R
+import com.tcc.beautyplannerpro.funcionario.FuncionarioModel
 
 
 class FuncoesConsultarFuncionarioActivity : AppCompatActivity() {
     private lateinit var funcoesRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var funcoesList: ArrayList<FuncoesModel>
+   // private lateinit var funcoesList: ArrayList<FuncoesModel>
 
 
-   // private lateinit var funcionariosList: ArrayList<FuncionarioModel>
+    private lateinit var funcoesList: ArrayList<FuncionarioModel>
 
     private lateinit var dbRef: DatabaseReference
    // private lateinit var dbReffunc: DatabaseReference
@@ -33,7 +34,8 @@ class FuncoesConsultarFuncionarioActivity : AppCompatActivity() {
         funcoesRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        funcoesList = arrayListOf<FuncoesModel>()
+        //funcoesList = arrayListOf<FuncoesModel>()
+        funcoesList = arrayListOf<FuncionarioModel>()
 
 
 
@@ -49,13 +51,13 @@ class FuncoesConsultarFuncionarioActivity : AppCompatActivity() {
 
 
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Funcoes")
+        dbRef = FirebaseDatabase.getInstance().getReference("Funcionarios")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 funcoesList.clear()
                 if (snapshot.exists()){
                     for (funcoesSnap in snapshot.children){
-                        val funcoesData = funcoesSnap.getValue(FuncoesModel::class.java)
+                        val funcoesData = funcoesSnap.getValue(FuncionarioModel::class.java)
                         funcoesList.add(funcoesData!!)
                     }
                     val mAdapter = FuncoesConsultarFuncAdapter(funcoesList)
@@ -69,9 +71,9 @@ class FuncoesConsultarFuncionarioActivity : AppCompatActivity() {
                             val intent = Intent(this@FuncoesConsultarFuncionarioActivity, FuncoesConsultarServicoActivity::class.java)
 
                             //put extras
-                            intent.putExtra("funcoesId", funcoesList[position].funcoesId)
-                            intent.putExtra("funcoesfuncionarioNome", funcoesList[position].vfuncoesfuncionarioNome)
-                            intent.putExtra("funcoesservicoNome", funcoesList[position].vfuncoesservicoNome)
+                            intent.putExtra("funcionarioId", funcoesList[position].funcionarioId)
+                            intent.putExtra("funcoesfuncionarioNome", funcoesList[position].vfuncionarioNome)
+                            //intent.putExtra("funcoesservicoNome", funcoesList[position].vfuncoesservicoNome)
 
                             startActivity(intent)
 
