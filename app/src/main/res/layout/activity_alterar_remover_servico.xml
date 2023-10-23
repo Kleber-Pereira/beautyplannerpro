@@ -93,9 +93,28 @@
         android:text="Serviço* "
         android:textSize="20sp"
         android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/editText_AlterarRemeverServico"
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Profissional* "
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/editText_AlterarRemeverFuncionario"
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
-    <CheckBox
+    <!--<CheckBox
         android:id="@+id/checkbox_AlterarRemeverServico_barba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,7 +133,7 @@
         android:textSize="20sp"
 
         android:shadowColor="@color/colorPrimary"
-        android:buttonTint="@color/colorAccent"/>
+        android:buttonTint="@color/colorAccent"/>-->
 
 
 

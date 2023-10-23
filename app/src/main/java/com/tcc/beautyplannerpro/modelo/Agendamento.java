@@ -6,8 +6,10 @@ public class Agendamento {
     private String contato;
     private boolean whatsApp;
     private String email;
-    private boolean barba;
-    private boolean cabelo;
+    /*private boolean barba;
+    private boolean cabelo;*/
+    private String servico;
+    private String funcionario;
 
 
 
@@ -16,13 +18,15 @@ public class Agendamento {
     }
 
 
-    public Agendamento(String nome, String contato, boolean whatsApp, String email, boolean barba, boolean cabelo) {
+    public Agendamento(String nome, String contato, boolean whatsApp, String email,String servico, String funcionario ) {
         this.nome = nome;
         this.contato = contato;
         this.whatsApp = whatsApp;
         this.email = email;
-        this.barba = barba;
-        this.cabelo = cabelo;
+        /*this.barba = barba;
+        this.cabelo = cabelo;*/
+        this.servico = servico;
+        this.funcionario = funcionario;
     }
 
 
@@ -58,19 +62,20 @@ public class Agendamento {
         this.email = email;
     }
 
-    public boolean isBarba() {
-        return barba;
+    public String getServico() {
+        return servico;
     }
 
-    public void setBarba(boolean barba) {
-        this.barba = barba;
+    public void setServico(String servico) {
+        this.servico = servico;
     }
 
-    public boolean isCabelo() {
-        return cabelo;
+    public String getFuncionario() {
+        return funcionario;
     }
 
-    public void setCabelo(boolean cabelo) {
-        this.cabelo = cabelo;
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
     }
+
 }

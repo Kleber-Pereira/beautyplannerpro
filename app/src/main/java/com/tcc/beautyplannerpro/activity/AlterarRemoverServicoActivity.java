@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,8 +35,10 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
     private EditText editText_NumeroContato;
     private CheckBox checkBox_WhatsApp;
     private EditText editText_Email;
-    private CheckBox checkBox_Barba;
-    private CheckBox checkBox_Cabelo;
+   /* private CheckBox checkBox_Barba;
+    private CheckBox checkBox_Cabelo;*/
+    private TextView editText_Servico;
+    private TextView editText_Funcionario;
     private CardView cardView_Alterar;
     private CardView cardView_Remover;
 
@@ -47,10 +50,8 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
 
     private Agendamento agendamento;
 
-
-
-
-
+    private String funcoesservicoNome;
+    private String funcoesfuncionarioNome;
     private ArrayList<String> data = new ArrayList<String>();
 
     @Override
@@ -59,6 +60,8 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_alterar_remover_servico);
 
 
+        funcoesservicoNome = getIntent().getStringExtra("servicoservico");
+        funcoesfuncionarioNome = getIntent().getStringExtra("funcionarioNome");
 
         data = getIntent().getStringArrayListExtra("data");
 
@@ -69,8 +72,12 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
         editText_NumeroContato = (EditText)findViewById(R.id.editText_AlterarRemeverServico_Numero);
         checkBox_WhatsApp = (CheckBox)findViewById(R.id.checkbox_AlterarRemeverServico_WhatsApp);
         editText_Email = (EditText)findViewById(R.id.editText_AlterarRemeverServico_Email);
-        checkBox_Barba = (CheckBox)findViewById(R.id.checkbox_AlterarRemeverServico_barba);
+        /*checkBox_Barba = (CheckBox)findViewById(R.id.checkbox_AlterarRemeverServico_barba);
         checkBox_Cabelo = (CheckBox)findViewById(R.id.checkbox_AlterarRemeverServico_Cabelo);
+        */
+        editText_Servico= (TextView)findViewById(R.id.editText_AlterarRemeverServico_Email);
+        editText_Funcionario = (TextView)findViewById(R.id.editText_AlterarRemeverFuncionario);
+
         cardView_Alterar = (CardView)findViewById(R.id.cardView_AlterarRemeverServico_Alterar);
         cardView_Remover = (CardView)findViewById(R.id.cardView_AlterarRemeverServico_Remover);
 
@@ -121,14 +128,19 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
 
     private void obterDadosAgendamento(){
 
-
-
-
         reference = database.getReference().
                 child("BD").child("Calendario").child("HorariosAgendados").
                 child(data.get(2)).child("Mes").
-                child(data.get(1)).child("dia").child(data.get(0)).child(data.get(3));
+                child(data.get(1)).child("dia").child(data.get(0)).child(funcoesservicoNome).
+                child(funcoesfuncionarioNome).child(data.get(3));
 
+
+
+        /*reference = database.getReference().
+                child("BD").child("Calendario").child("HorariosAgendados").
+                child(data.get(2)).child("Mes").
+                child(data.get(1)).child("dia").child(data.get(0)).child(data.get(3));
+*/
 
         if( valueEventListener == null ){
 
@@ -174,18 +186,13 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
         editText_NumeroContato.setText(agendamento.getContato());
         editText_Email.setText(agendamento.getEmail());
         checkBox_WhatsApp.setChecked(agendamento.isWhatsApp());
-        checkBox_Cabelo.setChecked(agendamento.isCabelo());
-        checkBox_Barba.setChecked(agendamento.isBarba());
+        /*checkBox_Cabelo.setChecked(agendamento.isCabelo());
+        checkBox_Barba.setChecked(agendamento.isBarba());*/
+        editText_Servico.setText(agendamento.getServico());
+        editText_Funcionario.setText(agendamento.getFuncionario());
+
 
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -199,17 +206,20 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
         String contato = editText_NumeroContato.getText().toString();
         boolean whatsApp = checkBox_WhatsApp.isChecked();
         String email = editText_Email.getText().toString();
-        boolean barba = checkBox_Barba.isChecked();
-        boolean cabelo = checkBox_Cabelo.isChecked();
+        /*boolean barba = checkBox_Barba.isChecked();
+        boolean cabelo = checkBox_Cabelo.isChecked();*/
+        String servico = editText_Servico.getText().toString();
+        String funcionario = editText_Funcionario.getText().toString();
+
 
 
         if(!nome.isEmpty()){
 
-            if (!cabelo && !barba){
+            /*if (!cabelo && !barba){
 
                 Toast.makeText(getBaseContext(),"Escolha qual serviço gostaria de Agendar.",Toast.LENGTH_LONG).show();
 
-            }else{
+            }else{*/
 
 
                 if (Util.statusInternet_MoWi(getBaseContext())){
@@ -218,14 +228,15 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
 
                     if (agendamento.getNome().equals(nome) && agendamento.getContato().equals(contato) &&
                     agendamento.isWhatsApp() == whatsApp && agendamento.getEmail().equals(email) &&
-                    agendamento.isBarba() == barba && agendamento.isCabelo() == cabelo){
+                    //agendamento.isBarba() == barba && agendamento.isCabelo() == cabelo){
+                    agendamento.getServico() == servico && agendamento.getFuncionario() == funcionario){
 
                         Toast.makeText(getBaseContext(),"Você não alterou nenhuma informação",Toast.LENGTH_LONG).show();
 
 
                     }else{
 
-                        alterarDadosAgendamento(nome,contato,whatsApp,email,barba,cabelo);
+                        alterarDadosAgendamento(nome,contato,whatsApp,email,servico,funcionario);
 
                     }
 
@@ -234,7 +245,7 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
                     Toast.makeText(getBaseContext(),"Erro - Verifique sua conexão com a internet.",Toast.LENGTH_LONG).show();
 
                 }
-            }
+
 
         }else{
 
@@ -248,19 +259,20 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
 
 
     private void alterarDadosAgendamento(String nome,String contato,
-                                         boolean whatsApp, String email, boolean barba, boolean cabelo){
+                                         boolean whatsApp, String email, String servico, String funcionario){
 
 
         final DialogProgress dialogProgress = new DialogProgress();
         dialogProgress.show(getSupportFragmentManager(),"");
 
-        Agendamento dadosAgendamento = new Agendamento(nome,contato,whatsApp,email,barba,cabelo);
+        Agendamento dadosAgendamento = new Agendamento(nome,contato,whatsApp,email,servico,funcionario);
 
 
         DatabaseReference databaseReference  = database.getReference().
                 child("BD").child("Calendario").child("HorariosAgendados").
                 child(data.get(2)).child("Mes").
-                child(data.get(1)).child("dia").child(data.get(0));
+                child(data.get(1)).child("dia").child(data.get(0)).child(funcoesservicoNome).
+                child(funcoesfuncionarioNome);
 
 
         Map<String, Object> atualizacao = new HashMap<>();
@@ -313,7 +325,8 @@ public class AlterarRemoverServicoActivity extends AppCompatActivity implements 
         DatabaseReference databaseReference  = database.getReference().
                 child("BD").child("Calendario").child("HorariosAgendados").
                 child(data.get(2)).child("Mes").
-                child(data.get(1)).child("dia").child(data.get(0));
+                child(data.get(1)).child("dia").child(data.get(0)).child(funcoesservicoNome).
+                child(funcoesfuncionarioNome);
 
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,10 +30,14 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
     private EditText editText_NumeroContato;
     private CheckBox checkBox_WhatsApp;
     private EditText editText_Email;
-    private CheckBox checkBox_Barba;
-    private CheckBox checkBox_Cabelo;
+    /*private CheckBox checkBox_Barba;
+    private CheckBox checkBox_Cabelo;*/
+    private TextView editText_Servico;
+    private TextView editText_Funcionario;
     private CardView cardView_Agendar;
 
+    private String funcoesservicoNome;
+    private String funcoesfuncionarioNome;
 
 
     private ArrayList<String> data = new ArrayList<String>();
@@ -45,19 +50,28 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
 
         data = getIntent().getStringArrayListExtra("data");
+        funcoesservicoNome = getIntent().getStringExtra("servicoservico");
+        funcoesfuncionarioNome = getIntent().getStringExtra("funcionarioNome");
+
 
 
         editText_Nome = (EditText)findViewById(R.id.editText_AgendamentoServico_Nome);
         editText_NumeroContato = (EditText)findViewById(R.id.textView_AgendamentoServico_Numero);
         checkBox_WhatsApp = (CheckBox)findViewById(R.id.checkbox_AgendamentoServico_WhatsApp);
         editText_Email = (EditText)findViewById(R.id.editText_AgendamentoServico_Email);
-        checkBox_Barba = (CheckBox)findViewById(R.id.checkbox_AgendamentoServico_barba);
+        /*checkBox_Barba = (CheckBox)findViewById(R.id.checkbox_AgendamentoServico_barba);
         checkBox_Cabelo = (CheckBox)findViewById(R.id.checkbox_AgendamentoServico_Cabelo);
+       */
+        editText_Servico = (TextView)findViewById(R.id.editText_Servico);
+        editText_Funcionario = (TextView)findViewById(R.id.editText_Funcionario);
         cardView_Agendar = (CardView)findViewById(R.id.cardView_AgendamentoServico_Agendar);
 
 
 
         cardView_Agendar.setOnClickListener(this);
+
+        editText_Servico.setText(funcoesservicoNome);
+        editText_Funcionario.setText(funcoesfuncionarioNome);
 
     }
 
@@ -92,24 +106,29 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
         String contato = editText_NumeroContato.getText().toString();
         boolean whatsApp = checkBox_WhatsApp.isChecked();
         String email = editText_Email.getText().toString();
-        boolean barba = checkBox_Barba.isChecked();
-        boolean cabelo = checkBox_Cabelo.isChecked();
+       /* boolean barba = checkBox_Barba.isChecked();
+        boolean cabelo = checkBox_Cabelo.isChecked();*/
+        String servico = editText_Servico.getText().toString();
+        String funcionario = editText_Funcionario.getText().toString();
+
+
+
 
 
         if(!nome.isEmpty()){
 
-            if (!cabelo && !barba){
+            /*if (!cabelo && !barba){
 
                 Toast.makeText(getBaseContext(),"Escolha qual serviço gostaria de Agendar.",Toast.LENGTH_LONG).show();
 
-            }else{
+            }else{*/
 
 
                 if (Util.statusInternet_MoWi(getBaseContext())){
 
 
 
-                    agendarFirebase(nome,contato,whatsApp,email,barba,cabelo);
+                    agendarFirebase(nome,contato,whatsApp,email,servico,funcionario);
 
 
                 }else{
@@ -119,7 +138,7 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
                 }
             }
 
-        }else{
+        else{
 
             Toast.makeText(getBaseContext(),"Insira seu nome para Agendar.",Toast.LENGTH_LONG).show();
         }
@@ -127,11 +146,11 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
     }
 
 
-    private void agendarFirebase(String nome,String contato, boolean whatsApp, String email, boolean barba, boolean cabelo){
+    private void agendarFirebase(String nome,String contato, boolean whatsApp, String email, String servico, String funcionario){
 
 
 
-        Agendamento agendamento = new Agendamento(nome,contato,whatsApp,email,barba,cabelo);
+        Agendamento agendamento = new Agendamento(nome,contato,whatsApp,email,servico,funcionario);
 
         final DialogProgress dialogProgress = new DialogProgress();
 
@@ -142,7 +161,11 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
         DatabaseReference reference = firebaseDatabase.getReference().child("BD").child("Calendario")
                 .child("HorariosAgendados").child(data.get(2)).child("Mes").child(data.get(1))
-                .child("dia").child(data.get(0));
+                .child("dia").child(data.get(0)).child(funcoesservicoNome).child(funcoesfuncionarioNome);
+
+        /*DatabaseReference reference = firebaseDatabase.getReference().child("BD").child("Calendario")
+                .child("HorariosAgendados").child(data.get(2)).child("Mes").child(data.get(1))
+                .child("dia").child(data.get(0));*/
 
 
         reference.child(data.get(3)).setValue(agendamento).addOnCompleteListener(new OnCompleteListener<Void>() {

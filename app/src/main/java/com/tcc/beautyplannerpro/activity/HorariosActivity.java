@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tcc.beautyplannerpro.adapter.AdapterRecyclerView;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,8 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
 
     private ArrayList<String> data = new ArrayList<String>();
 
-
+    private String funcoesservicoNome;
+    private String funcoesfuncionarioNome;
 
 
     //firebase
@@ -63,6 +64,8 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
         database = FirebaseDatabase.getInstance();
 
         data = getIntent().getStringArrayListExtra("data");
+        funcoesservicoNome = getIntent().getStringExtra("servicoservico");
+        funcoesfuncionarioNome = getIntent().getStringExtra("funcionarioNome");
 
 
 
@@ -155,7 +158,8 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
 
         referenceBuscarHorario = database.getReference().
                 child("BD").child("Calendario").child("HorariosAgendados").
-                child(data.get(2)).child("Mes").child(data.get(1)).child("dia").child(data.get(0));
+                child(data.get(2)).child("Mes").child(data.get(1)).child("dia").child(data.get(0)).
+                child(funcoesservicoNome).child(funcoesfuncionarioNome);
 
 
 
@@ -261,7 +265,8 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
         DatabaseReference reference = database.getReference().
                 child("BD").child("Calendario").child("HorariosAgendados").
                 child(data.get(2)).child("Mes").
-                child(data.get(1)).child("dia").child(data.get(0)).child(horarios_Temp.get(posicao));
+                child(data.get(1)).child("dia").child(data.get(0)).child(funcoesservicoNome).
+                child(funcoesfuncionarioNome).child(horarios_Temp.get(posicao));
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -276,6 +281,8 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
                     data.add(3,horarioSelecionado);
 
                     intent.putExtra("data",data);
+                    intent.putExtra("servicoservico",funcoesservicoNome);
+                    intent.putExtra("funcionarioNome",funcoesfuncionarioNome);
 
                     startActivity(intent);
 
@@ -294,6 +301,8 @@ public class HorariosActivity extends AppCompatActivity implements AdapterRecycl
 
 
                     intent.putExtra("data",data);
+                    intent.putExtra("servicoservico",funcoesservicoNome);
+                    intent.putExtra("funcionarioNome",funcoesfuncionarioNome);
 
                     startActivity(intent);
 

@@ -50,6 +50,13 @@
         <activity android:name=".funcoes.FuncoesDetailsActivity" />
 
 
+        <activity android:name=".agendamento.FuncoesActivity" />
+        <activity android:name=".agendamento.FuncoesBuscarServicoActivity" />
+        <activity android:name=".agendamento.FuncoesBuscarFuncionarioActivity" />
+        <activity android:name=".agendamento.FuncoesConsultarServicoActivity" />
+        <activity android:name=".agendamento.FuncoesDetailsActivity" />
+
+
 
 
     </application>
