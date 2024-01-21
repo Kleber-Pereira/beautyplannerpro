@@ -26,8 +26,8 @@ class LoginActivity : AppCompatActivity() {
             logUserIn()
         }
 
-        binding.btnRegister.setOnClickListener{
-            registerUser()
+        binding.btnRecover.setOnClickListener{
+            recoverUser()
         }
     }
 
@@ -79,33 +79,32 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerUser() {
+    private fun recoverUser() {
 
         val email = binding.etEmail.text.toString()
-        val password = binding.etPassword.text.toString()
 
-        if (email.isNotEmpty() && password.isNotEmpty()) {
+        if (email.isNotEmpty()) {
 
-            user.createUserWithEmailAndPassword(email, password)
+            user.sendPasswordResetEmail(email)
                 .addOnCompleteListener(LoginActivity()) { task ->
 
                     if (task.isSuccessful) {
                         Toast.makeText(
                             this,
-                            "Registrado com sucesso",
+                            "Email enviado com sucesso",
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        startActivity(
+                        /*startActivity(
                             Intent(
                                 this,
                                 MainActivity::class.java
                             )
-                        )
+                        )*/
                         finish()
                     } else {
 
-                        user.signInWithEmailAndPassword(email, password)
+                        user.sendPasswordResetEmail(email)
                             .addOnCompleteListener { mTask ->
 
                                 if(mTask.isSuccessful){
@@ -129,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 this,
-                "Email e Password não podem ser vazios",
+                "Email não pode ser vazio",
                 Toast.LENGTH_SHORT
             ).show()
         }
