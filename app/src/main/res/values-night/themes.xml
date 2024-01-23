@@ -10,7 +10,14 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#2D2D2E</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/splashsplash</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="CalendarioTexto" parent="@style/TextAppearance.AppCompat.Small">
+
+        <item name="android:textSize">18sp</item>
+
     </style>
 </resources>

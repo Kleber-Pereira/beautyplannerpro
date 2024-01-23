@@ -19,6 +19,7 @@ import com.tcc.beautyplannerpro.Servicos.ServicosFragment;
 
 
 public class MainActivity extends AppCompatActivity {
+    //Comment
 
     private BottomNavigationView bottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener;

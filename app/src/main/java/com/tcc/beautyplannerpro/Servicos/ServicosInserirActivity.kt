@@ -13,8 +13,11 @@ import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.tcc.beautyplannerpro.R
 
 class ServicosInserirActivity : AppCompatActivity() {
@@ -60,24 +63,49 @@ class ServicosInserirActivity : AppCompatActivity() {
         }
 
         else {
-            val servicosId = dbRef.push().key!!
+            //val servicosId = dbRef.push().key!! //ponto de criação do token
+            val servicosId = vservicosServico
+            val servicoRef = dbRef.child(servicosId)
+            servicoRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        // The token already exists, you can handle this case here
+                        Toast.makeText(
+                            this@ServicosInserirActivity,
+                            "Serviço já cadastrado.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }else{
+                        val servicos = ServicosModel(
+                            servicosId,vservicosServico,
+                            vservicosPreco
+                        )
 
-            val servicos = ServicosModel(
-                servicosId,vservicosServico,
-                vservicosPreco
-            )
+                        dbRef.child(servicosId).setValue(servicos)
+                            .addOnCompleteListener {
+                                Toast.makeText(this@ServicosInserirActivity, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show()
 
-            dbRef.child(servicosId).setValue(servicos)
-                .addOnCompleteListener {
-                    Toast.makeText(this, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show()
-
-                    servicosServico.text.clear()
-                    servicosPreco.text.clear()
+                                servicosServico.text.clear()
+                                servicosPreco.text.clear()
 
 
-                }.addOnFailureListener { err ->
-                    Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+                            }.addOnFailureListener { err ->
+                                Toast.makeText(this@ServicosInserirActivity, "Error ${err.message}", Toast.LENGTH_LONG).show()
+                            }
+                    }
                 }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Toast.makeText(
+                        this@ServicosInserirActivity,
+                        "Erro lendo banco de dados: ${databaseError.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            })
+
+
         }
 
     }
