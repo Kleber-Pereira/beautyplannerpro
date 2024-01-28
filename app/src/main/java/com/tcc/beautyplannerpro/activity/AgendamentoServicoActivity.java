@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 
 import com.tcc.beautyplannerpro.R;
 import com.tcc.beautyplannerpro.modelo.Agendamento;
+import com.tcc.beautyplannerpro.modelo.TwilioService;
 import com.tcc.beautyplannerpro.util.DialogProgress;
 import com.tcc.beautyplannerpro.util.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -146,6 +147,9 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
     }
 
 
+
+
+
     private void agendarFirebase(String nome,String contato, boolean whatsApp, String email, String servico, String funcionario){
 
 
@@ -174,6 +178,49 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
 
                 if (task.isSuccessful()){
+
+                    //----twillo---
+
+
+                    String telefone = contato;
+                    String nome = editText_Nome.getText().toString();
+                    String servico = editText_Servico.getText().toString();
+                    String funcionario = editText_Funcionario.getText().toString();
+                    String dia = (data.get(0) +"/"+data.get(1)+"/"+data.get(2));
+                    String horario = (data.get(3));
+                    // String accountSid = System.getenv("AC6abb957b4af10ab40428285f56f58add");
+                    // String authToken = System.getenv("7226ace1dceb8c3f4f9edf35dd7fe025");
+                    /*Twilio.init(accountSid, authToken);
+                    Message message = Message.creator(
+                            new PhoneNumber(telefone),"MG3e0104f57d45974fd589e55519f447be",
+                            nome + ", o serviço "+ servico + " com o profissional "+ funcionario +
+                    " do dia " + data.get(0) +"/"+data.get(1)+"/"+data.get(2)+
+                    " às "+ data.get(3) +" foi agendado com sucesso pelo BeautyPlanner!"
+                    ).create();
+                    System.out.println(message.getSid());*/
+
+                   /* Twilio.init(System.getenv("AC6abb957b4af10ab40428285f56f58add"),
+                            System.getenv("7226ace1dceb8c3f4f9edf35dd7fe025"));
+                    Message message = Message.creator(
+                            new PhoneNumber("+5513974230860"),
+                            new PhoneNumber("+12563848116"),
+                            "teste").create();
+
+
+                    System.out.println(message.getSid());*/
+                    String mensagem = (nome + ", o serviço "+ servico + " com o profissional "
+                            + funcionario +
+                            " no dia "+ dia +
+                            " às "+ horario +" foi agendado com sucesso pelo BeautyPlanner!").toString();
+
+                    TwilioService.sendSms(telefone, mensagem);
+
+                   /*TwilioService.sendSms(telefone, nome + ", o serviço "+ servico + " com o profissional "+ funcionario +
+                            " no dia "+ dia +
+                            " às "+ horario +" foi agendado com sucesso pelo BeautyPlanner!");*/
+
+                    //TwilioService.sendSms(telefone, "agendado com sucesso pelo BeautyPlanner!");
+
 
 
                     dialogProgress.dismiss();
