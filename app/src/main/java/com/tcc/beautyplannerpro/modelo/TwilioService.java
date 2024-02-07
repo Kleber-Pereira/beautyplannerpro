@@ -25,21 +25,19 @@ import retrofit2.http.Path;
 public class TwilioService {
 
 
-   /* private static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-    DatabaseReference conta = firebaseDatabase.getReference().child("Twilio").child("ACCOUNT_SID");
-    DatabaseReference token = firebaseDatabase.getReference().child("Twilio").child("AUTH_TOKEN");
-    DatabaseReference telefone = firebaseDatabase.getReference().child("Twilio").child("TELEFONE");*/
 
-    public static String ACCOUNT_SID ="AC6abb957b4af10ab40428285f56f58add",
-            AUTH_TOKEN = "82a1e731e260da8524d7da9cbb306382";
-    public static void sendSms(String phoneNumber,String message){
+
+    public static  String ACCOUNT_SID ="AC6abb957b4af10ab40428285f56f58add",
+            AUTH_TOKEN = "a85ef8aaea8def349f8e42bb88e05b3e";
+    public  static void sendSms(String phoneNumber,String message){
         OkHttpClient client = new OkHttpClient.Builder().build();
         client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request request = chain.request().newBuilder()
+                              //  .addHeader("Authorization", Credentials.basic(ACCOUNT_SID, AUTH_TOKEN))
                                 .addHeader("Authorization", Credentials.basic(ACCOUNT_SID, AUTH_TOKEN))
                                 .build();
                         return chain.proceed(request);

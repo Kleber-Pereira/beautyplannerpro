@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 
 import com.tcc.beautyplannerpro.R;
 import com.tcc.beautyplannerpro.modelo.Agendamento;
+import com.tcc.beautyplannerpro.modelo.SalvaCliente;
 import com.tcc.beautyplannerpro.modelo.TwilioService;
 import com.tcc.beautyplannerpro.util.DialogProgress;
 import com.tcc.beautyplannerpro.util.Util;
@@ -155,6 +156,8 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
 
         Agendamento agendamento = new Agendamento(nome,contato,whatsApp,email,servico,funcionario);
+        SalvaCliente salvacliente = new SalvaCliente(nome,contato,email);
+
 
         final DialogProgress dialogProgress = new DialogProgress();
 
@@ -178,6 +181,10 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
 
                 if (task.isSuccessful()){
+
+                    DatabaseReference referencecliente = firebaseDatabase.getReference().child("Cliente").child("Servico")
+                            .child(funcoesservicoNome).child(contato);
+                    referencecliente.setValue(salvacliente);
 
                     //----twillo---
 
