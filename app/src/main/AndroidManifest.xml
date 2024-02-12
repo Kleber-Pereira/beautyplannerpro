@@ -39,9 +39,17 @@
         <activity android:name=".activity.AlterarRemoverServicoActivity" />
 
         <activity android:name=".funcionario.FuncionarioActivity" />
+        <activity android:name=".funcionario.FuncionarioOpcoesActivity" />
         <activity android:name=".funcionario.FuncionarioBuscarActivity" />
         <activity android:name=".funcionario.FuncionarioDetailsActivity" />
         <activity android:name=".funcionario.FuncionarioInserirActivity" />
+
+        <activity android:name=".cliente.ClienteActivity" />
+        <activity android:name=".cliente.ClienteBuscarActivity" />
+        <activity android:name=".cliente.ClienteDetailsActivity" />
+        <activity android:name=".cliente.ClienteInserirActivity" />
+
+
         <activity android:name=".Servicos.ServicosInserirActivity" />
         <activity android:name=".Servicos.ServicosActivity" />
         <activity android:name=".Servicos.ServicosBuscarActivity" />

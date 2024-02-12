@@ -22,11 +22,16 @@
         android:title="Funcionário"
         android:icon="@drawable/equipe"
         />
-
     <item
+        android:id="@+id/item_navegacao_Cliente"
+        android:title="Cliente"
+        android:icon="@drawable/cliente"
+        />
+
+   <!-- <item
         android:id="@+id/item_navegacao_Funcao"
         android:title="Funcão"
         android:icon="@drawable/icone_funcao"
         />
-
+-->
 </menu>

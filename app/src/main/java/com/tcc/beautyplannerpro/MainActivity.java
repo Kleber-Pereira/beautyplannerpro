@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import com.tcc.beautyplannerpro.cliente.ClienteFragment;
 import com.tcc.beautyplannerpro.fragment.FragmentCalendario;
 import com.tcc.beautyplannerpro.fragment.FragmentHome;
 import com.tcc.beautyplannerpro.funcoes.FuncoesFragment;
 import com.tcc.beautyplannerpro.util.Permissao;
-import com.tcc.beautyplannerpro.funcionario.FuncionarioFragment;
+import com.tcc.beautyplannerpro.funcionario.FuncionarioOpcoesFragment;
 import com.tcc.beautyplannerpro.Servicos.ServicosFragment;
 
 
@@ -22,13 +24,18 @@ public class MainActivity extends AppCompatActivity {
     //Comment
 
     private BottomNavigationView bottomNavigationView;
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener;
 
     private FragmentHome fragmentHome;
     private FragmentCalendario fragmentCalendario;
     private ServicosFragment fragmentServico;
-    private FuncionarioFragment fragmentFuncionario;
-    private FuncoesFragment fragmentFuncao;
+    private FuncionarioOpcoesFragment fragmentFuncionario;
+    private ClienteFragment fragmentCliente;
+   // private FuncoesFragment fragmentFuncao;
+
+
 
 
     private Fragment fragment;
@@ -51,16 +58,23 @@ public class MainActivity extends AppCompatActivity {
         fragmentHome = new FragmentHome();
         fragmentCalendario = new FragmentCalendario();
         fragmentServico= new ServicosFragment();
-        fragmentFuncionario = new FuncionarioFragment();
-        fragmentFuncao = new FuncoesFragment();
+        fragmentFuncionario = new FuncionarioOpcoesFragment();
+        fragmentCliente = new ClienteFragment();
+        //fragmentFuncao = new FuncoesFragment();
 
         fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction().replace(R.id.frameLayout_Fragment,fragmentHome).commit();
 
+
+
         permissao();
 
     }
+
+
+
+
 
     private void permissao(){
 
@@ -105,10 +119,15 @@ public class MainActivity extends AppCompatActivity {
                         fragment = fragmentFuncionario;
                         break;
 
-                    case R.id.item_navegacao_Funcao:
+                    case R.id.item_navegacao_Cliente:
+
+                        fragment = fragmentCliente;
+                        break;
+
+                    /*case R.id.item_navegacao_Funcao:
 
                         fragment = fragmentFuncao;
-                        break;
+                        break;*/
 
 
                 }
