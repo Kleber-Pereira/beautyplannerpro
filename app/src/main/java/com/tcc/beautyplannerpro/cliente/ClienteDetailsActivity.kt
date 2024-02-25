@@ -14,10 +14,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ClienteDetailsActivity : AppCompatActivity() {
-    private lateinit var tvclienteId: TextView
+
     private lateinit var tvclienteNome: TextView
     private lateinit var tvclienteTelefone: TextView
     private lateinit var tvclienteEmail:  TextView
+
+
+    private lateinit var funcoesservicoNome: String
+    private lateinit var contato: String
+    private lateinit var clienteNome: String
+    private lateinit var clienteEmail: String
 
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
@@ -30,10 +36,15 @@ class ClienteDetailsActivity : AppCompatActivity() {
         initView()
         setValuesToViews()
 
+        funcoesservicoNome = intent.getStringExtra("servicoservico")!!
+        contato = intent.getStringExtra("contato")!!
+        clienteNome = intent.getStringExtra("nome")!!
+        clienteEmail = intent.getStringExtra("email")!!
+
         btnUpdate.setOnClickListener {
             openUpdateDialog(
-                intent.getStringExtra("clienteId").toString(),
-                intent.getStringExtra("clienteNome").toString()
+                intent.getStringExtra("contato").toString()
+               // intent.getStringExtra("clienteNome").toString()
             )
            // return@setOnClickListener
 
@@ -41,7 +52,7 @@ class ClienteDetailsActivity : AppCompatActivity() {
         }
         btnDelete.setOnClickListener {
             deleteRecord(
-                intent.getStringExtra("clienteId").toString()
+                intent.getStringExtra("contato").toString()
             )
             //return@setOnClickListener
         }
@@ -78,7 +89,7 @@ class ClienteDetailsActivity : AppCompatActivity() {
 
 
     private fun openUpdateDialog(
-        clienteId: String,
+       // clienteId: String,
         clienteNome: String
     ) {
         val mDialog = AlertDialog.Builder(this)
@@ -92,9 +103,10 @@ class ClienteDetailsActivity : AppCompatActivity() {
         val etclienteEmail = mDialogView.findViewById<EditText>(R.id.etclienteEmail)
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
-        etclienteNome.setText(intent.getStringExtra("clienteNome").toString())
-        etclienteTelefone.setText(intent.getStringExtra("clienteTelefone").toString())
-        etclienteEmail.setText(intent.getStringExtra("clienteEmail").toString())
+        etclienteNome.setText(intent.getStringExtra("nome").toString())
+        etclienteTelefone.setText(intent.getStringExtra("contato").toString())
+        etclienteEmail.setText(intent.getStringExtra("email").toString())
+        //etclienteServico.setText(intent.getStringExtra("servico").toString())
 
 
         mDialog.setTitle("Atualizando $clienteNome ")
@@ -104,10 +116,11 @@ class ClienteDetailsActivity : AppCompatActivity() {
 
         btnUpdateData.setOnClickListener {
             updateClienteData(
-                clienteId,
+               // clienteId,
                 etclienteNome.text.toString(),
                 etclienteTelefone.text.toString(),
-                etclienteEmail.text.toString()
+                etclienteEmail.text.toString(),
+                funcoesservicoNome
 
             )
 
@@ -123,22 +136,24 @@ class ClienteDetailsActivity : AppCompatActivity() {
     }
 
     private fun updateClienteData(
-        clienteId: String,
+       // clienteId: String,
         clienteNome: String,
-        clienteTelefone: String,
+        clienteContato: String,
         clienteEmail: String,
+        clienteServico: String
 
 
     ) {
-        val dbRef = FirebaseDatabase.getInstance().getReference("Cliente").child(clienteId)
+        val dbRef = FirebaseDatabase.getInstance().getReference("Cliente").child("Servico")
+            .child(funcoesservicoNome).child(contato)
         val clienteInfo = ClienteModel(
-            clienteId, clienteNome, clienteTelefone, clienteEmail
+             clienteNome, clienteContato, clienteEmail, clienteServico
         )
         dbRef.setValue(clienteInfo)
     }
 
     private fun initView() {
-        tvclienteId = findViewById(R.id.tvclienteId)
+        //tvclienteId = findViewById(R.id.tvclienteId)
         tvclienteNome = findViewById(R.id.tvclienteNome)
         tvclienteTelefone = findViewById(R.id.tvclienteTelefone)
         tvclienteEmail = findViewById(R.id.tvclienteEmail)
@@ -147,16 +162,17 @@ class ClienteDetailsActivity : AppCompatActivity() {
     }
 
     private fun setValuesToViews() {
-        tvclienteId.text = intent.getStringExtra("clienteId")
-        tvclienteNome.text = intent.getStringExtra("clienteNome")
-        tvclienteTelefone.text = intent.getStringExtra("clienteTelefone")
-        tvclienteEmail.text = intent.getStringExtra("clienteEmail")
+        //tvclienteId.text = intent.getStringExtra("clienteId")
+        tvclienteNome.text = intent.getStringExtra("nome")
+        tvclienteTelefone.text = intent.getStringExtra("contato")
+        tvclienteEmail.text = intent.getStringExtra("email")
 
     }
     private fun deleteRecord(
         id: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("Cliente").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("Cliente").child("Servico")
+            .child(funcoesservicoNome).child(contato)
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {

@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cliente"
+        android:text="Clientes"
         android:layout_marginTop="80dp"
         android:textSize="28sp"
         android:gravity="center"
@@ -20,22 +20,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnInsertData"
+        android:id="@+id/btnFetchData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Novo Cliente"
+        android:text="Buscar Cliente"
         android:layout_marginTop="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btnFetchData"
+        android:id="@+id/btnPushMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:text="Buscar cliente"
+        android:text="Enviar Push"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFetchData" />
 </androidx.constraintlayout.widget.ConstraintLayout>

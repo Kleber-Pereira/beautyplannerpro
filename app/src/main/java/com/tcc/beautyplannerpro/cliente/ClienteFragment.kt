@@ -14,7 +14,7 @@ import com.tcc.beautyplannerpro.R
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-private lateinit var btnInsertData: Button
+private lateinit var btnPushMsg: Button
 private lateinit var btnFetchData: Button
 /**
  * A simple [Fragment] subclass.
@@ -47,15 +47,17 @@ class ClienteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnInsertData = view.findViewById(R.id.btnInsertData)
+        btnPushMsg = view.findViewById(R.id.btnPushMsg)
         btnFetchData = view.findViewById(R.id.btnFetchData)
 
-        btnInsertData.setOnClickListener{
-            val intent = Intent(activity, ClienteInserirActivity::class.java)
+        btnPushMsg.setOnClickListener{
+            //alterar
+            val intent = Intent(activity, ClienteBuscarActivity::class.java)
             startActivity(intent)
         }
+        //buscar cliente
         btnFetchData.setOnClickListener{
-            val intent = Intent(activity, ClienteBuscarActivity::class.java)
+            val intent = Intent(activity, ClienteBuscarServicoActivity::class.java)
             startActivity(intent)
         }
 

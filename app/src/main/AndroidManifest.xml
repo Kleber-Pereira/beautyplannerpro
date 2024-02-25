@@ -47,7 +47,7 @@
         <activity android:name=".cliente.ClienteActivity" />
         <activity android:name=".cliente.ClienteBuscarActivity" />
         <activity android:name=".cliente.ClienteDetailsActivity" />
-        <activity android:name=".cliente.ClienteInserirActivity" />
+        <activity android:name=".cliente.ClienteBuscarServicoActivity" />
 
 
         <activity android:name=".Servicos.ServicosInserirActivity" />

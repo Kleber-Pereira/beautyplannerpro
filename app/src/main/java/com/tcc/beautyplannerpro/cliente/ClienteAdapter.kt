@@ -31,7 +31,7 @@ class ClienteAdapter (private val clienteList: ArrayList<ClienteModel>) :
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val currentFuncionario = clienteList[position]
-            holder.tvclienteNome.text = currentFuncionario.vclienteNome
+            holder.tvclienteNome.text = currentFuncionario.nome
 
 
         }
