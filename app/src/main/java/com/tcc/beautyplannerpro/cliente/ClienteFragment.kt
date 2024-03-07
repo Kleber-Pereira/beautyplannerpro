@@ -52,7 +52,7 @@ class ClienteFragment : Fragment() {
 
         btnPushMsg.setOnClickListener{
             //alterar
-            val intent = Intent(activity, ClienteBuscarActivity::class.java)
+            val intent = Intent(activity, ClientePushBuscarServicoActivity::class.java)
             startActivity(intent)
         }
         //buscar cliente
