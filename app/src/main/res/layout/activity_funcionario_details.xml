@@ -37,7 +37,7 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/id_lin"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -86,7 +86,7 @@
             </LinearLayout>
 
 
-        </LinearLayout>
+        </LinearLayout>-->
 
 
         <LinearLayout

@@ -30,7 +30,7 @@
         android:id="@+id/btnInsertData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nova Função"
+        android:text="Atribuir Função"
         android:layout_marginTop="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:text="Buscar Função"
+        android:text="Excluir Função"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />

@@ -79,6 +79,9 @@ dependencies {
     implementation 'com.github.hihi-dev:twiliosms:0.1.1'
 
 
+    //máscara
+    implementation 'com.github.santalu:maskara:1.0.0'
+   // implementation 'ru.egslava:MaskedEditText:1.0.5'
 
 }
 

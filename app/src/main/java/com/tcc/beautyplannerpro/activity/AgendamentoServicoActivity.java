@@ -13,8 +13,8 @@ import androidx.cardview.widget.CardView;
 
 import com.tcc.beautyplannerpro.R;
 import com.tcc.beautyplannerpro.cliente.ClienteModel;
+import com.tcc.beautyplannerpro.databinding.ActivityMainBinding;
 import com.tcc.beautyplannerpro.modelo.Agendamento;
-import com.tcc.beautyplannerpro.modelo.SalvaCliente;
 import com.tcc.beautyplannerpro.modelo.TwilioService;
 import com.tcc.beautyplannerpro.util.DialogProgress;
 import com.tcc.beautyplannerpro.util.Util;
@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+
 
 import java.util.ArrayList;
 
@@ -41,6 +43,7 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
     private String funcoesservicoNome;
     private String funcoesfuncionarioNome;
+    ActivityMainBinding binding;
 
 
     private ArrayList<String> data = new ArrayList<String>();
@@ -60,6 +63,9 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
 
         editText_Nome = (EditText)findViewById(R.id.editText_AgendamentoServico_Nome);
         editText_NumeroContato = (EditText)findViewById(R.id.textView_AgendamentoServico_Numero);
+        /*final EditText editText_NumeroContato = (EditText) findViewById(R.id.textView_AgendamentoServico_Numero);
+        editText_NumeroContato.addTextChangedListener(Mascara.insert("(##)#####-####", editText_NumeroContato));
+*/
         checkBox_WhatsApp = (CheckBox)findViewById(R.id.checkbox_AgendamentoServico_WhatsApp);
         editText_Email = (EditText)findViewById(R.id.editText_AgendamentoServico_Email);
         /*checkBox_Barba = (CheckBox)findViewById(R.id.checkbox_AgendamentoServico_barba);
@@ -125,6 +131,7 @@ public class AgendamentoServicoActivity extends AppCompatActivity implements Vie
                 Toast.makeText(getBaseContext(),"Escolha qual serviço gostaria de Agendar.",Toast.LENGTH_LONG).show();
 
             }else{*/
+
 
 
                 if (Util.statusInternet_MoWi(getBaseContext())){

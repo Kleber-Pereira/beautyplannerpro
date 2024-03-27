@@ -7,6 +7,8 @@
         <!-- Add Bitmap with gravity as center to align the content in center -->
         <bitmap
             android:gravity="center"
-            android:src="@drawable/playstoreicon" />
+            android:src="@drawable/playstoreicon"
+
+            />
     </item>
 </layer-list>

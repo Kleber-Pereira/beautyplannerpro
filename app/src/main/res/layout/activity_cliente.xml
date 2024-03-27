@@ -23,7 +23,7 @@
         android:id="@+id/btnFetchData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buscar Cliente"
+        android:text="Editar ou Excluir Cliente"
         android:layout_marginTop="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

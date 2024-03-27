@@ -25,7 +25,7 @@
                 android:id="@+id/tvfuncoesfuncionarioNome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome da funcionario"
+                android:text="Nome do profissional"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/black"

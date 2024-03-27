@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
+  <!--  <EditText
         android:id="@+id/funcionarioTelefone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,7 +28,22 @@
         android:hint="Telefone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcionarioNome" />
+        app:layout_constraintTop_toBottomOf="@+id/funcionarioNome" />-->
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/funcionarioTelefone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Telefone"
+        app:mask="+55___________"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/funcionarioNome"/>
 
     <EditText
         android:id="@+id/funcionarioEmail"
@@ -47,7 +62,7 @@
         android:id="@+id/btnSalvarFuncionario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Salvar Funcionario"
+        android:text="Salvar Profissional"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="219dp"

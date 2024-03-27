@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class FuncionarioDetailsActivity : AppCompatActivity() {
-    private lateinit var tvfuncionarioId: TextView
+   // private lateinit var tvfuncionarioId: TextView
     private lateinit var tvfuncionarioNome: TextView
     private lateinit var tvfuncionarioTelefone: TextView
     private lateinit var tvfuncionarioEmail:  TextView
@@ -137,7 +137,8 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        tvfuncionarioId = findViewById(R.id.tvfuncionarioId)
+        //tvfuncionarioId = findViewById(R.id.tvfuncionarioId)
+       // tvfuncionarioId = findViewById(R.id.tvfuncionarioId)
         tvfuncionarioNome = findViewById(R.id.tvfuncionarioNome)
         tvfuncionarioTelefone = findViewById(R.id.tvfuncionarioTelefone)
         tvfuncionarioEmail = findViewById(R.id.tvfuncionarioEmail)
@@ -146,7 +147,7 @@ class FuncionarioDetailsActivity : AppCompatActivity() {
     }
 
     private fun setValuesToViews() {
-        tvfuncionarioId.text = intent.getStringExtra("funcionarioId")
+       // tvfuncionarioId.text = intent.getStringExtra("funcionarioId")
         tvfuncionarioNome.text = intent.getStringExtra("funcionarioNome")
         tvfuncionarioTelefone.text = intent.getStringExtra("funcionarioTelefone")
         tvfuncionarioEmail.text = intent.getStringExtra("funcionarioEmail")
